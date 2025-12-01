@@ -12,6 +12,8 @@ import jakarta.ws.rs.core.UriInfo;
 import java.time.ZoneId;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Arrays;
+import java.util.List;
 import java.nio.charset.StandardCharsets;
 @Path("authentication")
 public class AuthenticationEndPoint {
@@ -60,11 +62,15 @@ public class AuthenticationEndPoint {
                 uriInfo.getAbsolutePath().toString());
         System.out.println("Expiration date: " +
                 toDate(LocalDateTime.now().plusMinutes(15L)));
+        // Optionally set simple role(s) in the token (for demo/workshop)
+        List<String> roles = Arrays.asList("USER");
+
         String jwtToken = Jwts.builder()
                 .setSubject(username)
                 .setIssuer(uriInfo.getAbsolutePath().toString())
                 .setIssuedAt(new Date())
                 .setExpiration(toDate(LocalDateTime.now().plusMinutes( 15L)))
+                .claim("roles", roles)
                 .signWith(SignatureAlgorithm.HS512, key)
                 .compact();
         System.out.println("the returned token is : " + jwtToken);

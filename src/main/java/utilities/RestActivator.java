@@ -5,6 +5,7 @@ import jakarta.ws.rs.ApplicationPath;
 import resource.AuthenticationEndPoint;
 import resource.UERessources;
 import resource.ModuleRessources;
+import resource.SecurityFilter;
 
 
 import java.util.HashSet;
@@ -19,6 +20,7 @@ public class RestActivator extends Application {
         classes.add(UERessources.class);
         classes.add(ModuleRessources.class);
         classes.add(AuthenticationEndPoint.class);
+        classes.add(SecurityFilter.class);
         return classes;
     }
 }

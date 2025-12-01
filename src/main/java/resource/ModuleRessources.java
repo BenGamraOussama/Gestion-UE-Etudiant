@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Path("/modules")
+@Secured
 public class ModuleRessources {
     private static final Logger LOGGER = Logger.getLogger(ModuleRessources.class.getName());
     private final ModuleBusiness moduleBusiness = new ModuleBusiness();

@@ -14,6 +14,7 @@ import entities.UniteEnseignement;
 @XmlRootElement // Nécessaire pour la sérialisation XML
 
 @Path("/UE")
+@Secured
 public class UERessources {
     private UniteEnseignementBusiness ueBusiness = new UniteEnseignementBusiness();
 
